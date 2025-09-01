@@ -1,0 +1,59 @@
+MIT License
+
+Copyright (c) 2025 Yangın Acil Durum Sistemi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Özel Kullanım Koşulları
+
+Bu yazılım yangın acil durumları için geliştirilmiştir. Kullanım sırasında aşağıdaki koşullara uyulması gerekmektedir:
+
+1. **Acil Durum Uyarısı**: Bu sistem gerçek acil durumlar için geliştirilmiştir. Gerçek yangın acil durumlarında mutlaka resmi acil servisleri (112) arayın.
+
+2. **Veri Doğruluğu**: Sistem koordinatları Google Maps ve TomTom API'lerinden çekmektedir. Koordinatların doğruluğu garanti edilmez.
+
+3. **API Kullanımı**: TomTom API kullanımı için geçerli bir API anahtarı gereklidir. API kullanım limitleri ve koşulları TomTom'un kullanım şartlarına tabidir.
+
+4. **Sorumluluk Reddi**: Bu yazılımın kullanımından doğabilecek herhangi bir zarar için geliştiriciler sorumlu değildir.
+
+5. **Ticari Kullanım**: Bu yazılım ticari amaçlarla kullanılabilir, ancak kaynak kodun açık tutulması önerilir.
+
+6. **Güncellemeler**: İtfaiye koordinatları ve sistem güncellemeleri düzenli olarak yapılmalıdır.
+
+## Katkıda Bulunanlar
+
+Bu projeye katkıda bulunan tüm geliştiricilere teşekkür ederiz:
+
+- Proje Yöneticisi: Erena
+- AI Assistant: Geliştirme ve optimizasyon
+- TomTom API: Harita verileri
+- Google Maps: Koordinat doğrulama
+- OSRM: Açık kaynak rota hesaplama
+
+## İletişim
+
+Proje hakkında sorularınız için GitHub issues kullanabilirsiniz.
+
+---
+
+**Son Güncelleme**: 1 Eylül 2025
+**Versiyon**: 1.0.0
+**Lisans**: MIT License
