@@ -1,0 +1,12 @@
+# API Anahtarları - Bu dosyayı config_local.py olarak kopyalayın ve gerçek anahtarlarınızı girin
+
+# TomTom API Anahtarı
+# https://developer.tomtom.com/ adresinden alabilirsiniz
+TOMTOM_API_KEY = "your_tomtom_api_key_here"
+
+# OpenWeatherMap API Anahtarı (Opsiyonel)
+# https://openweathermap.org/api adresinden alabilirsiniz
+OPENWEATHER_API_KEY = "your_openweather_api_key_here"
+
+# TomTom Traffic API Anahtarı (TomTom API ile aynı olabilir)
+TOMTOM_TRAFFIC_API_KEY = "your_tomtom_traffic_api_key_here"
