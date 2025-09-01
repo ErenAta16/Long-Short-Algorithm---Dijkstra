@@ -1,19 +1,19 @@
-# 🚨 Yangın Acil Durum Sistemi
+# Yangın Acil Durum Sistemi
 
-## 📋 Proje Açıklaması
+## Proje Açıklaması
 
 Bu proje, yangın acil durumlarında en yakın itfaiye istasyonunu bulmak ve en optimal rotayı hesaplamak için geliştirilmiş akıllı bir sistemdir. Sistem, TomTom harita verilerini kullanarak gerçek zamanlı rota optimizasyonu yapar ve tali yolları önceliklendirir.
 
-## ✨ Özellikler
+## Özellikler
 
-- 🔍 **Otomatik İtfaiye Bulma**: 69 itfaiye istasyonu ile otomatik en yakın itfaiye tespiti
-- 🗺️ **Akıllı Rota Optimizasyonu**: Tali yolları önceliklendiren rota hesaplama
-- 🌾 **Kırsal Yangın Tespiti**: Arazi türüne göre özel rota önerileri
-- 📍 **Gerçek Zamanlı Harita**: İnteraktif harita ile görselleştirme
-- 🚒 **OSRM Entegrasyonu**: Gerçek yol verileri ile rota çizimi
-- 🔄 **TomTom API**: Güncel harita ve trafik verileri
+- **Otomatik İtfaiye Bulma**: 69 itfaiye istasyonu ile otomatik en yakın itfaiye tespiti
+- **Akıllı Rota Optimizasyonu**: Tali yolları önceliklendiren rota hesaplama
+- **Kırsal Yangın Tespiti**: Arazi türüne göre özel rota önerileri
+- **Gerçek Zamanlı Harita**: İnteraktif harita ile görselleştirme
+- **OSRM Entegrasyonu**: Gerçek yol verileri ile rota çizimi
+- **TomTom API**: Güncel harita ve trafik verileri
 
-## 🛠️ Teknolojiler
+## Teknolojiler
 
 - **Python 3.9+**
 - **TomTom API** - Harita ve rota verileri
@@ -22,7 +22,7 @@ Bu proje, yangın acil durumlarında en yakın itfaiye istasyonunu bulmak ve en 
 - **aiohttp** - Asenkron HTTP istekleri
 - **Google Maps** - Koordinat doğrulama
 
-## 📦 Kurulum
+## Kurulum
 
 ### Gereksinimler
 
@@ -32,14 +32,20 @@ pip install -r requirements.txt
 
 ### API Anahtarları
 
-`config.py` dosyasında aşağıdaki API anahtarlarını yapılandırın:
-
-```python
-TOMTOM_API_KEY = "your_tomtom_api_key"
-OPENWEATHER_API_KEY = "your_openweather_api_key"  # Opsiyonel
+1. `config_local.py.example` dosyasını `config_local.py` olarak kopyalayın:
+```bash
+cp config_local.py.example config_local.py
 ```
 
-## 🚀 Kullanım
+2. `config_local.py` dosyasında gerçek API anahtarlarınızı girin:
+```python
+TOMTOM_API_KEY = "your_real_tomtom_api_key"
+OPENWEATHER_API_KEY = "your_real_openweather_api_key"  # Opsiyonel
+```
+
+**Önemli**: `config_local.py` dosyası `.gitignore`'da olduğu için Git'e commit edilmez.
+
+## Kullanım
 
 ### Ana Sistem
 
@@ -53,7 +59,7 @@ python fire_emergency_system.py
 python google_maps_coordinate_finder.py
 ```
 
-## 📁 Proje Yapısı
+## Proje Yapısı
 
 ```
 ├── fire_emergency_system.py      # Ana sistem
@@ -80,7 +86,7 @@ python google_maps_coordinate_finder.py
 
 **Toplam: 69 itfaiye istasyonu**
 
-## 🔧 Sistem Özellikleri
+## Sistem Özellikleri
 
 ### Rota Optimizasyonu
 - **Ana Yollar**: Hızlı ulaşım için
@@ -94,14 +100,14 @@ python google_maps_coordinate_finder.py
 - Arazi türü tespiti
 - Dinamik rota ağırlıklandırması
 
-## 📊 Veri Kaynakları
+## Veri Kaynakları
 
 - **Google Maps**: Koordinat doğrulama
 - **TomTom API**: Harita ve rota verileri
 - **OSRM**: Açık kaynak rota hesaplama
 - **OpenWeatherMap**: Hava durumu verileri
 
-## 🤝 Katkıda Bulunma
+## Katkıda Bulunma
 
 1. Fork yapın
 2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
@@ -109,20 +115,20 @@ python google_maps_coordinate_finder.py
 4. Push yapın (`git push origin feature/amazing-feature`)
 5. Pull Request oluşturun
 
-## 📝 Lisans
+## Lisans
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-## 👥 Geliştiriciler
+## Geliştiriciler
 
 - **Proje Yöneticisi**: Erena
 - **Geliştirici**: AI Assistant
 
-## 📞 İletişim
+## İletişim
 
 Proje hakkında sorularınız için issue açabilirsiniz.
 
-## 🙏 Teşekkürler
+## Teşekkürler
 
 - TomTom API ekibine
 - OSRM geliştiricilerine
