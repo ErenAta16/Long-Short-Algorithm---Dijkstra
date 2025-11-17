@@ -64,85 +64,48 @@ class GoogleMapsCoordinateFinder:
     def find_all_fire_stations(self) -> Dict[str, Tuple[float, float]]:
         """Tüm itfaiyelerin koordinatlarını bul"""
         fire_stations = {
-            # Bursa İlçe İtfaiyeleri
-            "Bursa Merkez İtfaiye": "Bursa Büyükşehir Belediyesi İtfaiye Dairesi",
-            "Nilüfer İtfaiye": "Nilüfer Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Osmangazi İtfaiye": "Osmangazi Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Yıldırım İtfaiye": "Yıldırım Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Mudanya İtfaiye": "Mudanya Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Gemlik İtfaiye": "Gemlik Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Karacabey İtfaiye": "Karacabey Belediyesi İtfaiye Müdürlüğü Bursa",
-            "İnegöl İtfaiye": "İnegöl Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Orhangazi İtfaiye": "Orhangazi Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Kestel İtfaiye": "Kestel Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Gürsu İtfaiye": "Gürsu Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Harmancık İtfaiye": "Harmancık Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Büyükorhan İtfaiye": "Büyükorhan Belediyesi İtfaiye Müdürlüğü Bursa",
-            "Orhaneli İtfaiye": "Orhaneli Belediyesi İtfaiye Müdürlüğü Bursa",
+            # İzmir İlçe İtfaiyeleri
+            "İzmir Konak İtfaiye": "İzmir Büyükşehir Belediyesi İtfaiye Dairesi Başkanlığı Konak İzmir",
+            "İzmir Bornova İtfaiye": "Bornova Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Karşıyaka İtfaiye": "Karşıyaka Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Çiğli İtfaiye": "Çiğli Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Gaziemir İtfaiye": "Gaziemir Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Bayraklı İtfaiye": "Bayraklı Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Narlıdere İtfaiye": "Narlıdere Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Balçova İtfaiye": "Balçova Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Buca İtfaiye": "Buca Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Foça İtfaiye": "Foça Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Menemen İtfaiye": "Menemen Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Dikili İtfaiye": "Dikili Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Aliağa İtfaiye": "Aliağa Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Bergama İtfaiye": "Bergama Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Ödemiş İtfaiye": "Ödemiş Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Tire İtfaiye": "Tire Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Torbalı İtfaiye": "Torbalı Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Menderes İtfaiye": "Menderes Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Urla İtfaiye": "Urla Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Çeşme İtfaiye": "Çeşme Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Karaburun İtfaiye": "Karaburun Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Seferihisar İtfaiye": "Seferihisar Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Bayındır İtfaiye": "Bayındır Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Kiraz İtfaiye": "Kiraz Belediyesi İtfaiye Müdürlüğü İzmir",
+            "İzmir Kemalpaşa İtfaiye": "Kemalpaşa Belediyesi İtfaiye Müdürlüğü İzmir",
             
-            # Balıkesir İlçe İtfaiyeleri
-            "Balıkesir Merkez İtfaiye": "Balıkesir Büyükşehir Belediyesi İtfaiye Dairesi",
-            "Bandırma İtfaiye": "Bandırma Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Gönen İtfaiye": "Gönen Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Erdek İtfaiye": "Erdek Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Ayvalık İtfaiye": "Ayvalık Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Edremit İtfaiye": "Edremit Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Burhaniye İtfaiye": "Burhaniye Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Havran İtfaiye": "Havran Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Dursunbey İtfaiye": "Dursunbey Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Sındırgı İtfaiye": "Sındırgı Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Bigadiç İtfaiye": "Bigadiç Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Susurluk İtfaiye": "Susurluk Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Kepsut İtfaiye": "Kepsut Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Manyas İtfaiye": "Manyas Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Savaştepe İtfaiye": "Savaştepe Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "İvrindi İtfaiye": "İvrindi Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Balya İtfaiye": "Balya Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            "Karesi İtfaiye": "Karesi Belediyesi İtfaiye Müdürlüğü Balıkesir",
-            
-            # Çanakkale İlçe İtfaiyeleri
-            "Çanakkale Merkez İtfaiye": "Çanakkale Belediyesi İtfaiye Müdürlüğü",
-            "Gelibolu İtfaiye": "Gelibolu Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Lapseki İtfaiye": "Lapseki Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Eceabat İtfaiye": "Eceabat Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Bozcaada İtfaiye": "Bozcaada Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Gökçeada İtfaiye": "Gökçeada Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Yenice İtfaiye": "Yenice Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Bayramiç İtfaiye": "Bayramiç Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Çan İtfaiye": "Çan Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Biga İtfaiye": "Biga Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Ayvacık İtfaiye": "Ayvacık Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            "Ezine İtfaiye": "Ezine Belediyesi İtfaiye Müdürlüğü Çanakkale",
-            
-            # Tekirdağ İlçe İtfaiyeleri
-            "Tekirdağ Merkez İtfaiye": "Tekirdağ Büyükşehir Belediyesi İtfaiye Dairesi",
-            "Çorlu İtfaiye": "Çorlu Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Çerkezköy İtfaiye": "Çerkezköy Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Süleymanpaşa İtfaiye": "Süleymanpaşa Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Malkara İtfaiye": "Malkara Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Saray İtfaiye": "Saray Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Ergene İtfaiye": "Ergene Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Kapaklı İtfaiye": "Kapaklı Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Şarköy İtfaiye": "Şarköy Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Hayrabolu İtfaiye": "Hayrabolu Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            "Muratlı İtfaiye": "Muratlı Belediyesi İtfaiye Müdürlüğü Tekirdağ",
-            
-            # Kırklareli İlçe İtfaiyeleri
-            "Kırklareli Merkez İtfaiye": "Kırklareli Belediyesi İtfaiye Müdürlüğü",
-            "Lüleburgaz İtfaiye": "Lüleburgaz Belediyesi İtfaiye Müdürlüğü Kırklareli",
-            "Babaeski İtfaiye": "Babaeski Belediyesi İtfaiye Müdürlüğü Kırklareli",
-            "Vize İtfaiye": "Vize Belediyesi İtfaiye Müdürlüğü Kırklareli",
-            "Pınarhisar İtfaiye": "Pınarhisar Belediyesi İtfaiye Müdürlüğü Kırklareli",
-            "Demirköy İtfaiye": "Demirköy Belediyesi İtfaiye Müdürlüğü Kırklareli",
-            "Kofçaz İtfaiye": "Kofçaz Belediyesi İtfaiye Müdürlüğü Kırklareli",
-            
-            # Yalova İlçe İtfaiyeleri
-            "Yalova Merkez İtfaiye": "Yalova Belediyesi İtfaiye Müdürlüğü",
-            "Çınarcık İtfaiye": "Çınarcık Belediyesi İtfaiye Müdürlüğü Yalova",
-            "Termal İtfaiye": "Termal Belediyesi İtfaiye Müdürlüğü Yalova",
-            "Armutlu İtfaiye": "Armutlu Belediyesi İtfaiye Müdürlüğü Yalova",
-            "Çiftlikköy İtfaiye": "Çiftlikköy Belediyesi İtfaiye Müdürlüğü Yalova",
-            "Altınova İtfaiye": "Altınova Belediyesi İtfaiye Müdürlüğü Yalova"
+            # Manisa İlçe İtfaiyeleri
+            "Manisa Merkez İtfaiye": "Manisa Büyükşehir Belediyesi İtfaiye Dairesi Başkanlığı",
+            "Manisa Yunusemre İtfaiye": "Yunusemre Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Şehzadeler İtfaiye": "Şehzadeler Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Akhisar İtfaiye": "Akhisar Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Salihli İtfaiye": "Salihli Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Turgutlu İtfaiye": "Turgutlu Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Soma İtfaiye": "Soma Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Kırkağaç İtfaiye": "Kırkağaç Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Alaşehir İtfaiye": "Alaşehir Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Demirci İtfaiye": "Demirci Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Sarıgöl İtfaiye": "Sarıgöl Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Kula İtfaiye": "Kula Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Gördes İtfaiye": "Gördes Belediyesi İtfaiye Müdürlüğü Manisa",
+            "Manisa Ahmetli İtfaiye": "Ahmetli Belediyesi İtfaiye Müdürlüğü Manisa"
         }
         
         results = {}
@@ -189,7 +152,7 @@ def main():
         # Sonuçları göster
         print(f"\n📊 TOPLAM SONUÇ:")
         print(f"   ✅ Bulunan: {len(results)}")
-        print(f"   ❌ Bulunamayan: {69 - len(results)}")
+        print(f"   ❌ Bulunamayan: {39 - len(results)}")
         
         # Sonuçları kaydet
         finder.save_results(results)

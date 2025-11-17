@@ -9,6 +9,7 @@ import aiohttp
 from typing import Dict, List, Tuple, Optional
 import config
 from tomtom_api import TomTomAPI
+from fire_stations import load_fire_stations
 import time
 import logging
 
@@ -220,98 +221,10 @@ class FireStationFinder:
         # Basit grid arama - belirli aralıklarla itfaiye ara
         fire_stations = []
         
-        # Türkiye genelindeki bilinen itfaiye noktaları - Daha kapsamlı
-        known_stations = [
-            # Bursa Bölgesi - Harmanlı'ya yakın
-            ("Bursa Merkez İtfaiye", (40.1926, 29.0766)),
-            ("Karacabey İtfaiye", (40.2156, 28.3619)),  # Harmanlı'ya en yakın (~15-20 km)
-            ("Mudanya İtfaiye", (40.3776, 29.0650)),
-            ("Gemlik İtfaiye", (40.4311, 29.1570)),
-            ("İnegöl İtfaiye", (40.0783, 29.5137)),
-            ("Orhangazi İtfaiye", (40.4892, 29.3089)),
-            ("Kestel İtfaiye", (40.1983, 29.2172)),
-            ("Gürsu İtfaiye", (40.2167, 29.1833)),
-            ("Nilüfer İtfaiye", (40.2140, 29.0280)),
-            ("Yıldırım İtfaiye", (40.1928, 29.0650)),
-            ("Osmangazi İtfaiye", (40.1926, 29.0766)),
-            
-            # Balıkesir Bölgesi
-            ("Balıkesir Merkez İtfaiye", (39.6484, 27.8826)),
-            ("Bandırma İtfaiye", (40.3520, 27.9740)),
-            ("Gönen İtfaiye", (40.1040, 27.6540)),
-            ("Erdek İtfaiye", (40.3997, 27.7933)),
-            ("Ayvalık İtfaiye", (39.3171, 26.6958)),
-            ("Edremit İtfaiye", (39.5961, 27.0244)),
-            ("Burhaniye İtfaiye", (39.5000, 26.9667)),
-            ("Havran İtfaiye", (39.5556, 27.1011)),
-            ("Dursunbey İtfaiye", (39.5856, 28.6311)),
-            ("Sındırgı İtfaiye", (39.2456, 28.5911)),
-            ("Bigadiç İtfaiye", (39.3956, 28.1311)),
-            ("Susurluk İtfaiye", (39.9156, 28.1511)),
-            ("Kepsut İtfaiye", (39.6856, 28.1411)),
-            ("Manyas İtfaiye", (40.0467, 27.9700)),
-            ("Savaştepe İtfaiye", (39.3456, 27.0011)),
-            ("İvrindi İtfaiye", (39.5856, 26.9267)),
-            ("Balya İtfaiye", (39.7556, 27.5367)),
-            ("Karesi İtfaiye", (39.6584, 27.8926)),
-            
-            # Çanakkale Bölgesi
-            ("Çanakkale Merkez İtfaiye", (40.1553, 26.4142)),
-            ("Gelibolu İtfaiye", (40.4069, 26.6708)),
-            ("Lapseki İtfaiye", (40.3447, 26.6856)),
-            ("Eceabat İtfaiye", (40.1856, 26.3578)),
-            ("Bozcaada İtfaiye", (39.8233, 26.0400)),
-            ("Gökçeada İtfaiye", (40.2056, 25.8878)),
-            ("Yenice İtfaiye", (39.9308, 27.2589)),
-            ("Bayramiç İtfaiye", (39.8097, 26.6400)),
-            ("Çan İtfaiye", (40.0278, 27.0461)),
-            ("Biga İtfaiye", (40.2281, 27.2422)),
-            ("Ayvacık İtfaiye", (39.6011, 26.4044)),
-            ("Ezine İtfaiye", (39.7856, 26.3406)),
-            
-            # Tekirdağ Bölgesi
-            ("Tekirdağ Merkez İtfaiye", (40.9781, 27.5117)),
-            ("Çorlu İtfaiye", (41.1592, 27.8000)),
-            ("Çerkezköy İtfaiye", (41.2850, 28.0000)),
-            ("Süleymanpaşa İtfaiye", (40.9881, 27.5217)),
-            ("Malkara İtfaiye", (40.8900, 26.9011)),
-            ("Saray İtfaiye", (41.3400, 28.3678)),
-            ("Ergene İtfaiye", (41.1692, 27.8100)),
-            ("Kapaklı İtfaiye", (41.2750, 28.0100)),
-            ("Şarköy İtfaiye", (40.6122, 27.1144)),
-            ("Hayrabolu İtfaiye", (41.2131, 27.1069)),
-            ("Muratlı İtfaiye", (41.1722, 27.5111)),
-            
-            # Kırklareli Bölgesi
-            ("Kırklareli Merkez İtfaiye", (41.7355, 27.2256)),
-            ("Lüleburgaz İtfaiye", (41.4067, 27.3556)),
-            ("Babaeski İtfaiye", (41.4322, 26.9856)),
-            ("Vize İtfaiye", (41.5728, 27.7656)),
-            ("Pınarhisar İtfaiye", (41.6200, 27.5200)),
-            ("Demirköy İtfaiye", (41.8100, 27.7700)),
-            ("Kofçaz İtfaiye", (41.7300, 27.1500)),
-            
-            # Yalova Bölgesi
-            ("Yalova Merkez İtfaiye", (40.6500, 29.2667)),
-            ("Çınarcık İtfaiye", (40.6400, 29.1267)),
-            ("Termal İtfaiye", (40.6100, 29.1767)),
-            ("Armutlu İtfaiye", (40.5200, 28.8467)),
-            ("Çiftlikköy İtfaiye", (40.6600, 29.3167)),
-            ("Altınova İtfaiye", (40.6900, 29.5167)),
-            
-            # İstanbul Bölgesi
-            ("İstanbul Büyükşehir İtfaiye", (41.0082, 28.9784)),
-            ("Kocaeli Merkez İtfaiye", (40.7650, 29.9400)),
-            ("Sakarya Merkez İtfaiye", (40.7569, 30.3781)),
-            
-            # Diğer Bölgeler
-            ("Ankara Büyükşehir İtfaiye", (39.9334, 32.8597)),
-            ("İzmir Büyükşehir İtfaiye", (38.4192, 27.1287)),
-            ("Antalya Büyükşehir İtfaiye", (36.8969, 30.7133)),
-            ("Bursa Mudanya Station Social Facilities", (40.373305, 28.889496))  # Otomatik bulunan
-        ]
+        # İzmir ve Manisa illerine ait doğrulanmış istasyonlar
+        known_stations = load_fire_stations()
         
-        for name, coords in known_stations:
+        for name, coords in known_stations.items():
             distance = self._haversine_distance(fire_lat, fire_lon, coords[0], coords[1])
             
             if distance <= radius_km:
@@ -370,8 +283,8 @@ async def test_fire_station_finder():
     # FireStationFinder'ı başlat
     finder = FireStationFinder(tomtom_api)
     
-    # Test yangın noktası (Bursa merkez)
-    test_fire_location = (40.1926, 29.0766)
+    # Test yangın noktası (İzmir Konak)
+    test_fire_location = (38.4230, 27.1533)
     
     print(f"🔥 Test yangın noktası: {test_fire_location}")
     
