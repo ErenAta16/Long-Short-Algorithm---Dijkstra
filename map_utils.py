@@ -5,50 +5,47 @@ Folium harita oluşturma ve görselleştirme fonksiyonları - Tali yolları önc
 """
 
 import folium
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, Tuple
 from fire_stations import categorize_fire_stations
+
 
 def create_interactive_map(fire_stations: Dict[str, Tuple[float, float]]) -> str:
     """Etkileşimli harita oluştur - Yangın noktası seçimi için"""
-    # Marmara Bölgesi merkezi
-    center_lat, center_lon = 40.5, 28.5
-    
+    # İzmir-Manisa odaklı Ege Bölgesi merkezi
+    center_lat, center_lon = 38.75, 27.4
+
     # Harita oluştur
     m = folium.Map(
-        location=[center_lat, center_lon], 
+        location=[center_lat, center_lon],
         zoom_start=8,
-        tiles='OpenStreetMap'
+        tiles="OpenStreetMap",
     )
-    
+
     # Harita kontrolleri ekle
     folium.LayerControl().add_to(m)
-    
+
     # İtfaiye istasyonlarını bölgelere göre grupla ve farklı renklerle göster
     region_colors = {
-        "Marmara Bölgesi Ana İtfaiyeler": ("red", "fire-extinguisher"),
-        "Bursa İlçe İtfaiyeleri": ("darkred", "fire-extinguisher"),
-        "Balıkesir İlçe İtfaiyeleri": ("orange", "fire-extinguisher"),
-        "Çanakkale İlçe İtfaiyeleri": ("lightred", "fire-extinguisher"),
-        "Tekirdağ İlçe İtfaiyeleri": ("cadetblue", "fire-extinguisher"),
-        "Kırklareli İlçe İtfaiyeleri": ("blue", "fire-extinguisher"),
-        "Yalova İlçe İtfaiyeleri": ("purple", "fire-extinguisher")
+        "İzmir İtfaiyeleri": ("red", "fire-extinguisher"),
+        "Manisa İtfaiyeleri": ("darkblue", "fire-extinguisher"),
+        "Diğer": ("gray", "info-sign"),
     }
-    
+
     # Bölgelere göre grupla
     regions = categorize_fire_stations(fire_stations)
-    
+
     # Her bölgeyi ayrı ayrı ekle
     for region_name, stations in regions.items():
         if stations:
-            color, icon = region_colors[region_name]
+            color, icon = region_colors.get(region_name, ("gray", "info-sign"))
             for name, coords in stations:
                 folium.Marker(
                     coords,
                     popup=f"🚒 {name}<br><small>{region_name}</small>",
                     tooltip=f"🚒 {name}",
-                    icon=folium.Icon(color=color, icon=icon)
+                    icon=folium.Icon(color=color, icon=icon),
                 ).add_to(m)
-    
+
     # Harita dosyasını kaydet
     map_file = "interactive_fire_map.html"
     m.save(map_file)

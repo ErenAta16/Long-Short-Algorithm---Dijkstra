@@ -84,15 +84,23 @@ async def find_nearest_fire_station(fire_location: Tuple[float, float],
 
 def determine_terrain_type(lat: float, lon: float) -> str:
     """Arazi türünü belirle (basit heuristik)"""
-    # Marmara bölgesi için basit arazi tespiti
-    if lat > 40.5:  # Kuzey Marmara - Ormanlık
-        return "forest"
-    elif lat < 39.5:  # Güney Marmara - Dağlık
-        return "mountain"
-    elif 39.5 <= lat <= 40.5:  # Orta Marmara - Kırsal
-        return "rural"
+    # İzmir ve Manisa bölgesi için arazi tespiti
+    # İzmir: ~38.0-39.1 lat, ~26.3-28.2 lon
+    # Manisa: ~38.5-38.6 lat, ~27.4-28.2 lon
+    
+    if 38.0 <= lat <= 39.1 and 26.3 <= lon <= 28.5:
+        # İzmir-Manisa bölgesi
+        if lon < 27.0:  # Batı İzmir (Çeşme, Urla) - Kıyı
+            return "urban"
+        elif lat < 38.3:  # Güney İzmir (Menderes, Torbalı) - Kırsal
+            return "rural"
+        elif lat > 38.7 or lon > 28.0:  # Manisa ve kuzey İzmir - Dağlık/Ormanlık
+            return "mountain_forest"
+        else:  # Merkez bölgeler
+            return "urban"
     else:
-        return "urban"
+        # Diğer bölgeler için genel sınıflandırma
+        return "rural"
 
 def get_osrm_route(start_lat: float, start_lon: float, end_lat: float, end_lon: float, 
                    terrain_type: str = "rural") -> Optional[Dict]:
