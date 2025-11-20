@@ -1,17 +1,15 @@
-# 🚒 Yangın Acil Durum Sistemi - Gelişmiş Rota Bulma
+#  Yangın Acil Durum Sistemi - Gelişmiş Rota Bulma
 
-## 🎯 Proje Açıklaması
+##  Proje Açıklaması
 
 Bu proje, yangın acil durumlarında en yakın itfaiye istasyonunu bulmak ve **matematiksel olarak garantili** en optimal rotayı hesaplamak için geliştirilmiş akıllı bir sistemdir. 
 
-### 🔥 Yeni Özellikler (v2.0)
+### Özellikler (v2.0)
 
-- ✅ **3 Gelişmiş Algoritma:** Dijkstra, A*, Bidirectional Search
-- ✅ **%100 Matematiksel Doğruluk:** Kapsamlı testlerle doğrulanmış
-- ✅ **Yüksek Performans:** Milisaniyeler içinde sonuç
-- ✅ **Gerçek Veriler:** OpenStreetMap entegrasyonu
-- ✅ **İzmir & Manisa:** 53 itfaiye istasyonu ile çalışır
-- ✅ **Graph Teorisi:** Akademik temelli implementasyon
+**3 Gelişmiş Algoritma:** Dijkstra, A*, Bidirectional Search
+**Gerçek Veriler:** OpenStreetMap entegrasyonu
+**İzmir & Manisa:** 53 itfaiye istasyonu ile çalışır
+**Graph Teorisi** 
 
 ## Özellikler
 
@@ -23,7 +21,6 @@ Bu proje, yangın acil durumlarında en yakın itfaiye istasyonunu bulmak ve **m
 - **TomTom API**: Güncel harita ve trafik verileri
 - **Overpass/OSM Tabanlı Koordinatlar**: Açık veri ile doğrulanmış istasyon konumları
 
-## Teknolojiler
 
 - **Python 3.9+**
 - **TomTom API** - Harita ve rota verileri
@@ -70,21 +67,14 @@ python fire_emergency_system.py
 # Kapsamlı sistem testi
 python comprehensive_benchmark.py
 ```
-
-**Test Kapsamı:**
-- Koordinat doğrulama (53 istasyon)
-- Network analizi (53 node, 530 edge)
-- Algoritma performansı (30 rota testi)
-- Sistem sağlığı kontrolü
-
 ## Proje Yapısı
 
 ```
 🎯 YENİ ALGORİTMA MODÜLLERİ
-├── advanced_pathfinding.py      # 🚀 Dijkstra, A*, Bidirectional algoritmaları
-├── network_builder.py            # 🏗️ Graph network oluşturucu
-├── comprehensive_benchmark.py   # 📊 Kapsamlı performans ve doğruluk testleri
-└── ALGORITHM_DOCUMENTATION.md    # 📚 Teknik döküman
+├── advanced_pathfinding.py      #  Dijkstra, A*, Bidirectional algoritmaları
+├── network_builder.py            #  Graph network oluşturucu
+  ├── comprehensive_benchmark.py   #  Doğruluk testleri
+└── ALGORITHM_DOCUMENTATION.md    # Teknik döküman
 
 📱 ESKI SİSTEM (Hala çalışır)
 ├── fire_emergency_system.py      # Ana sistem
@@ -99,15 +89,6 @@ python comprehensive_benchmark.py
 ├── tomtom_api.py                 # TomTom yardımcıları
 └── requirements.txt              # Bağımlılıklar
 ```
-
-## 🗺️ Desteklenen Bölgeler
-
-- **İzmir**: 40 itfaiye istasyonu (OpenStreetMap + Büyükşehir Belediyesi)
-- **Manisa**: 13 itfaiye istasyonu (OpenStreetMap + Büyükşehir Belediyesi)
-
-**Toplam: 53 itfaiye istasyonu**
-
-## 🚀 Yeni Algoritma Sistemi Kullanımı
 
 ### Temel Kullanım
 
@@ -134,11 +115,11 @@ python comprehensive_benchmark.py
 ```
 
 **Sonuçlar:**
-- ✅ Koordinat Doğrulama: %100 (53/53 istasyon geçerli)
-- ✅ Algoritma Doğruluk: %100 (30/30 test başarılı)
-- ✅ Sistem Sağlığı: %100 (Tüm modüller çalışıyor)
-- ⏱️ A* algoritması %57 daha az node inceliyor
-- 📊 Detaylı rapor: `comprehensive_benchmark_report.json`
+- Koordinat Doğrulama: %100 (53/53 istasyon geçerli)
+- Algoritma Doğruluk: %100 (30/30 test başarılı)
+- Sistem Sağlığı: %100 (Tüm modüller çalışıyor)
+-  A* algoritması %57 daha az node inceliyor
+-  Detaylı rapor: `comprehensive_benchmark_report.json`
 
 Daha fazla bilgi için: `ALGORITHM_DOCUMENTATION.md`
 
@@ -176,22 +157,3 @@ Daha fazla bilgi için: `ALGORITHM_DOCUMENTATION.md`
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
 
-## Geliştiriciler
-
-- **Proje Yöneticisi**: Erena
-- **Geliştirici**: AI Assistant
-
-## İletişim
-
-Proje hakkında sorularınız için issue açabilirsiniz.
-
-## Teşekkürler
-
-- TomTom API ekibine
-- OSRM geliştiricilerine
-- Google Maps ekibine
-- Açık kaynak topluluğuna
-
----
-
-**⚠️ Önemli Not**: Bu sistem acil durumlar için geliştirilmiştir. Gerçek acil durumlarda mutlaka resmi acil servisleri (112) arayın.
