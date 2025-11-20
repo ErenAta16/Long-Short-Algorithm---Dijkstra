@@ -70,13 +70,13 @@ python comprehensive_benchmark.py
 ## Proje Yapısı
 
 ```
-🎯 YENİ ALGORİTMA MODÜLLERİ
+YENİ ALGORİTMA MODÜLLERİ
 ├── advanced_pathfinding.py      #  Dijkstra, A*, Bidirectional algoritmaları
 ├── network_builder.py            #  Graph network oluşturucu
   ├── comprehensive_benchmark.py   #  Doğruluk testleri
 └── ALGORITHM_DOCUMENTATION.md    # Teknik döküman
 
-📱 ESKI SİSTEM (Hala çalışır)
+ESKI SİSTEM (Hala çalışır)
 ├── fire_emergency_system.py      # Ana sistem
 ├── fire_stations.py              # İtfaiye koordinatları (İzmir & Manisa)
 ├── fire_station_finder.py        # İtfaiye bulma sistemi
